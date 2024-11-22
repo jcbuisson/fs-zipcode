@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Résultats pour <%= postalCode %></title>
+</head>
+<body>
+   <h1>Communes pour le code postal : <%= postalCode %></h1>
+
+   <% if (error) { %>
+      <p style="color: red;"><%= error %></p>
+   <% } else if (communes.length === 0) { %>
+      <p>Aucune commune trouvée pour ce code postal.</p>
+   <% } else { %>
+      <table>
+         <tbody>
+            <tr style="color: indigo">
+               <th>Nom</th>
+               <th>Code</th>
+               <th>Population</th>
+            </tr>
+            <% communes.forEach((commune) => { %>
+               <tr>
+                  <td><%= commune.nom %></td>
+                  <td><%= commune.code %></td>
+                  <td><%= commune.population %></td>
+               </tr>
+            <% }); %>
+         </tbody>
+      </table>
+   <% } %>
+
+   <a href="/">Retour à l'accueil</a>
+</body>
+</html>
